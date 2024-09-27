@@ -1,0 +1,14 @@
+#!/bin/bash
+# author: Hanno Böck, https://hboeck.de/
+# license: 0BSD
+
+indeximgs="$(grep -o 'src=["'\''][a-zA-Z0-9.-]*["'\'']' index.html |
+	sed -e 's:src=["'\'']\([a-zA-Z0-9.-]*\)["'\'']:\1:g' |
+	sort -u)"
+
+dirimgs="$(find * -name \*.gif -or -name \*.bmp \
+	-or -name \*.png -or -name \*.jpg -or -name \*.jpeg \
+	-or -name \*.webp -or -name \*.avif |
+	sort -u)"
+
+comm -13 <(echo "$indeximgs") <(echo "$dirimgs")
