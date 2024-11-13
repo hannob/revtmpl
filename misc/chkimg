@@ -8,7 +8,7 @@ indeximgs="$(grep -o 'src=["'\''][a-zA-Z0-9.-]*["'\'']' index.html |
 
 dirimgs="$(find * -name \*.gif -or -name \*.bmp \
 	-or -name \*.png -or -name \*.jpg -or -name \*.jpeg \
-	-or -name \*.webp -or -name \*.avif |
+	-or -name \*.webp -or -name \*.avif -or -name \*.svg |
 	sort -u)"
 
 comm -13 <(echo "$indeximgs") <(echo "$dirimgs")
